@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterbook/api/firestore.dart';
 
 class AddNoteFormWidgetScreen extends StatefulWidget {
   const AddNoteFormWidgetScreen({Key? key}) : super(key: key);
@@ -11,15 +12,60 @@ class AddNoteFormWidgetScreen extends StatefulWidget {
 class _AddNoteFormWidgetScreenState extends State<AddNoteFormWidgetScreen> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   Color? selectedColor;
+  final FirestoreService _firestoreService = FirestoreService();
 
   void _onFormSubmitted() {
     if (formKey.currentState!.validate()) {
       final title = titleController.text;
       final content = contentController.text;
       final color = selectedColor ?? Colors.grey;
-      print("${title}");
-      // Send the data to Firestore or handle it as needed
+
+      try {
+        _firestoreService.addData(title, content, color);
+        _showSucessDialog(context);
+      } catch (error) {
+        _showErrorDialog(context, error.toString());
+      }
     }
+  }
+
+  void _showSucessDialog(BuildContext context){
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return  AlertDialog(
+          title: const Text('success'),
+          content: const Text("New Note added sucessfully"),
+          actions: <Widget>[
+            TextButton(
+              onPressed: (){
+                Navigator.pushNamed(context, "/notes");
+              },
+              child: const Text("ok")
+            )
+          ],
+        );
+      }
+    );
+  }
+
+  void _showErrorDialog(BuildContext context, String errorMessage){
+    showDialog(
+      context: context,
+      builder: (BuildContext context){
+        return AlertDialog(
+          title: const Text("Error"),
+          content: Text(errorMessage),
+          actions: <Widget>[
+            TextButton(
+              child: const Text("Try again?"),
+              onPressed: (){
+                Navigator.of(context).pop();
+              }),
+          ],
+        );
+      }
+    );
   }
 
   TextEditingController titleController = TextEditingController();
