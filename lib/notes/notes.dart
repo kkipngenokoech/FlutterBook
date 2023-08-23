@@ -5,6 +5,17 @@ import 'package:flutterbook/notes/notes_model.dart';
 class NotesWidgetScreen extends StatelessWidget {
   const NotesWidgetScreen({Key? key}) : super(key: key);
 
+  Color getColorFromString(String colorName) {
+    switch (colorName) {
+      case 'blue':
+        return Colors.blue;
+      case 'red':
+        return Colors.red;
+      default:
+        return Colors.grey;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,10 +42,16 @@ class NotesWidgetScreen extends StatelessWidget {
             itemCount: notes.length,
             itemBuilder: (context, index) {
               NoteModel note = notes[index];
-              return ListTile(
-                title: Text(note.title),
-                subtitle: Text(note.id),
-                // You can add more information from the 'note' object here
+              Color cardColor = getColorFromString(note.color);
+              return Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Card(
+                    elevation: 4,
+                    color: cardColor,
+                    child: ListTile(
+                      title: Text(note.title),
+                      subtitle: Text(note.content),
+                    )),
               );
             },
           );

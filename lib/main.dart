@@ -1,5 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterbook/notes/add_notes.dart';
+import 'package:flutterbook/notes/form_notes.dart';
 import 'package:flutterbook/notes/notes.dart';
 
 void main() async{
@@ -15,6 +17,11 @@ class FlutterBookWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      initialRoute: '/',
+      routes: {
+        '/notes': (context) => const NotesWidgetScreen(),
+        '/addnotes': (context) => const AddNoteFormWidgetScreen()
+      },
       home: DefaultTabController(
         length: 4,
         child: Scaffold(
@@ -50,7 +57,7 @@ class FlutterBookWidget extends StatelessWidget {
                 child: Text("contacts"),
               ),
               Center(
-                child: NotesWidgetScreen()
+                child: FormsNotesDisplayWidgetScreen()
               ),
               Center(
                 child: Text("tasks"),
