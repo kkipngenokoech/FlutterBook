@@ -1,10 +1,12 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterbook/notes/notes.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const FlutterBookWidget());
 }
-
-
 
 class FlutterBookWidget extends StatelessWidget {
   const FlutterBookWidget({super.key});
@@ -12,53 +14,47 @@ class FlutterBookWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: DefaultTabController(
-        length: 4,
-        child: Scaffold(
-          appBar: AppBar(
-            title: const Text("FlutterBook"),
-            bottom: const TabBar(
-              tabs: [
-                Tab(
-                  icon: Icon(Icons.date_range),
-                  text: "appointments",
+        home: DefaultTabController(
+            length: 4,
+            child: Scaffold(
+                appBar: AppBar(
+                  title: const Text("FlutterBook"),
+                  bottom: const TabBar(
+                    tabs: [
+                      Tab(
+                        icon: Icon(Icons.date_range),
+                        text: "appointments",
+                      ),
+                      Tab(
+                        icon: Icon(Icons.contacts),
+                        text: "contacts",
+                      ),
+                      Tab(
+                        icon: Icon(Icons.note),
+                        text: "notes",
+                      ),
+                      Tab(
+                        icon: Icon(Icons.assignment_turned_in),
+                        text: "tasks",
+                      )
+                    ],
+                  ),
                 ),
-                Tab(
-                  icon: Icon(Icons.contacts),
-                  text: "contacts",
-                ),
-                Tab(
-                  icon: Icon(Icons.note),
-                  text: "notes",
-                ),
-                Tab(
-                  icon: Icon(Icons.assignment_turned_in),
-                  text: "tasks",
-                )
-              ],
-            ),
-          ),
-          body: const Center(
-          child: TabBarView(
-            children: [
-              Center(
-                child: Text("Appointments"),
-              ),
-              Center(
-                child: Text("contacts"),
-              ),
-              Center(
-                child: Text("notes"),
-              ),
-              Center(
-                child: Text("tasks"),
-              )
-            ]
-            ),
-          ) 
-            
-        )
-      )
-    );
+                body: const Center(
+                  child: TabBarView(children: [
+                    Center(
+                      child: Text("Appointments"),
+                    ),
+                    Center(
+                      child: Text("contacts"),
+                    ),
+                    Center(
+                      child: NotesWidgetScreen()
+                    ),
+                    Center(
+                      child: Text("tasks"),
+                    )
+                  ]),
+                ))));
   }
 }
