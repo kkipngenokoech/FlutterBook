@@ -16,6 +16,10 @@ class NotesWidgetScreen extends StatelessWidget {
     }
   }
 
+  void _showNoteDetails(BuildContext context, NoteModel note) {
+    Navigator.pushNamed(context, '/notedetail', arguments: note);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,16 +47,20 @@ class NotesWidgetScreen extends StatelessWidget {
             itemBuilder: (context, index) {
               NoteModel note = notes[index];
               Color cardColor = getColorFromString(note.color);
-              return Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Card(
-                    elevation: 4,
-                    color: cardColor,
-                    child: ListTile(
-                      title: Text(note.title),
-                      subtitle: Text(note.content),
-                    )),
-              );
+              return GestureDetector(
+                  onTap: () {
+                    _showNoteDetails(context, note);
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Card(
+                        elevation: 4,
+                        color: cardColor,
+                        child: ListTile(
+                          title: Text(note.title),
+                          subtitle: Text(note.content),
+                        )),
+                  ));
             },
           );
         },

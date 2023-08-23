@@ -1,8 +1,10 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterbook/notes/add_notes.dart';
+import 'package:flutterbook/notes/edit_note.dart';
 import 'package:flutterbook/notes/form_notes.dart';
 import 'package:flutterbook/notes/notes.dart';
+import 'package:flutterbook/notes/show_note.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,7 +22,9 @@ class FlutterBookWidget extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/notes': (context) => const NotesWidgetScreen(),
-        '/addnotes': (context) => const AddNoteFormWidgetScreen()
+        '/addnotes': (context) => const AddNoteFormWidgetScreen(),
+        '/notedetail': (context) =>  NoteDetail(),
+        '/editnotedetail': (context) => EditNoteWidgetScreen()
       },
       home: DefaultTabController(
         length: 4,
