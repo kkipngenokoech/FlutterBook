@@ -14,47 +14,51 @@ class FlutterBookWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        home: DefaultTabController(
-            length: 4,
-            child: Scaffold(
-                appBar: AppBar(
-                  title: const Text("FlutterBook"),
-                  bottom: const TabBar(
-                    tabs: [
-                      Tab(
-                        icon: Icon(Icons.date_range),
-                        text: "appointments",
-                      ),
-                      Tab(
-                        icon: Icon(Icons.contacts),
-                        text: "contacts",
-                      ),
-                      Tab(
-                        icon: Icon(Icons.note),
-                        text: "notes",
-                      ),
-                      Tab(
-                        icon: Icon(Icons.assignment_turned_in),
-                        text: "tasks",
-                      )
-                    ],
-                  ),
+      debugShowCheckedModeBanner: false,
+      home: DefaultTabController(
+        length: 4,
+        child: Scaffold(
+          appBar: AppBar(
+            title: const Text("FlutterBook"),
+            bottom: const TabBar(
+              tabs: [
+                Tab(
+                  icon: Icon(Icons.date_range),
+                  text: "appointments",
                 ),
-                body: const Center(
-                  child: TabBarView(children: [
-                    Center(
-                      child: Text("Appointments"),
-                    ),
-                    Center(
-                      child: Text("contacts"),
-                    ),
-                    Center(
-                      child: NotesWidgetScreen()
-                    ),
-                    Center(
-                      child: Text("tasks"),
-                    )
-                  ]),
-                ))));
+                Tab(
+                  icon: Icon(Icons.contacts),
+                  text: "contacts",
+                ),
+                Tab(
+                  icon: Icon(Icons.note),
+                  text: "notes",
+                ),
+                Tab(
+                  icon: Icon(Icons.assignment_turned_in),
+                  text: "tasks",
+                )
+              ],
+            ),
+          ),
+          body: const Center(
+            child: TabBarView(children: [
+              Center(
+                child: Text("Appointments"),
+              ),
+              Center(
+                child: Text("contacts"),
+              ),
+              Center(
+                child: NotesWidgetScreen()
+              ),
+              Center(
+                child: Text("tasks"),
+              )
+            ]),
+          )
+        )
+      )
+    );
   }
 }

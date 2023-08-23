@@ -1,5 +1,5 @@
 class NoteModel {
-  final int id;
+  final String id;
   final String title;
   final String content;
   final String color;
@@ -11,9 +11,9 @@ class NoteModel {
     required this.color,
   });
 
-  factory NoteModel.fromMap(Map<String, dynamic> map) {
+  factory NoteModel.fromMap( String id, Map<String, dynamic> map) {
     return NoteModel(
-      id: map["id"] ?? 0, // Default value is provided if 'id' is missing
+      id: id,
       title: map["title"] ?? "",
       content: map["content"] ?? "",
       color: map["color"] ?? "",

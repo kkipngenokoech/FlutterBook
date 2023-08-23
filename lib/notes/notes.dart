@@ -33,6 +33,7 @@ class NotesWidgetScreen extends StatelessWidget {
               NoteModel note = notes[index];
               return ListTile(
                 title: Text(note.title),
+                subtitle: Text(note.id),
                 // You can add more information from the 'note' object here
               );
             },
