@@ -24,7 +24,7 @@ class FlutterBookWidget extends StatelessWidget {
         '/notes': (context) => const NotesWidgetScreen(),
         '/addnotes': (context) => const AddNoteFormWidgetScreen(),
         '/notedetail': (context) =>  NoteDetail(),
-        '/editnotedetail': (context) => EditNoteWidgetScreen()
+        '/editnotedetail': (context) =>  EditNoteWidgetScreen()
       },
       home: DefaultTabController(
         length: 4,
