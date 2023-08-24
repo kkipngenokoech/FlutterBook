@@ -22,4 +22,12 @@ class FirestoreService {
       throw FirebaseException(message: "Error adding data to firestore: $error", plugin: '');
     }
   }
+
+  static Future<void> updateNote(NoteModel note) async {
+    final noteUpdate = FirebaseFirestore.instance.collection('notes').doc(note.id);
+    await noteUpdate.update({
+      'title': note.title,
+      'content': note.content
+    });
+  }
 }

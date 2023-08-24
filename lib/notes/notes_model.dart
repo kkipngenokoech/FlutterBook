@@ -1,8 +1,8 @@
 class NoteModel {
   final String id;
-  final String title;
-  final String content;
-  final String color;
+  String title;
+  String content;
+  String color;
 
   NoteModel({
     required this.id,
