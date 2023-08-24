@@ -30,4 +30,9 @@ class FirestoreService {
       'content': note.content
     });
   }
+
+  static Future<void> deleteNode(String note) async {
+    final CollectionReference notesCollections = FirebaseFirestore.instance.collection('notes');
+    await notesCollections.doc(note).delete();
+  }
 }

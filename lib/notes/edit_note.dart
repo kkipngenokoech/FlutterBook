@@ -26,23 +26,23 @@ class EditNoteWidgetScreen extends StatelessWidget {
       try {
         await FirestoreService.updateNote(note);
         await showDialog(
-          context: context,
-          builder: (BuildContext context){
-            return SucessAlertDialogWidget(title: "Sucess", message: 'note updated sucessfully');
-          }
-        );
+            context: context,
+            builder: (BuildContext context) {
+              return SucessAlertDialogWidget(
+                  title: "Sucess", message: 'note updated sucessfully');
+            });
         Navigator.pushNamed(context, "/notes");
       } catch (error) {
         showDialog(
           context: context,
-          builder: (BuildContext context){
-            return ErrorAlertDialogWidget(
-              title: "error",
-              icon: const Icon(Icons.error),
-              message: error.toString(),
-            );
-          }
-        )
+            builder: (BuildContext context) {
+              return ErrorAlertDialogWidget(
+                title: "error",
+                icon: const Icon(Icons.error),
+                message: error.toString(),
+              );
+            }
+          );
       }
       // Navigate back to the note details screen
     }
