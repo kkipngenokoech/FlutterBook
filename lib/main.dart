@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterbook/appoitments/appointments.dart';
+import 'package:flutterbook/auth/splash_screen.dart';
 import 'package:flutterbook/notes/add_notes.dart';
 import 'package:flutterbook/notes/edit_note.dart';
 import 'package:flutterbook/notes/form_notes.dart';
@@ -59,7 +60,8 @@ class FlutterBookWidget extends StatelessWidget {
                 child: AppointmentWidgetScreen(),
               ),
               Center(
-                child: Text("contacts"),
+                child: SplashScreenAuthWidgetState(),
+                // child: Text("contacts"),
               ),
               Center(
                 child: FormsNotesDisplayWidgetScreen()
