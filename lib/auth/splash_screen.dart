@@ -7,15 +7,19 @@ class SplashScreenAuthWidgetState extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
+        child: Center(
+
           child: Container(
         width: double.infinity,
         height: MediaQuery.of(context).size.height,
         padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 30),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        child: Center(
+          child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Column(
               crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Text("Hello there!",
                     style:
@@ -56,7 +60,7 @@ class SplashScreenAuthWidgetState extends StatelessWidget {
                 const SizedBox(height: 20),
                 MaterialButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, "/");
+                    Navigator.pushNamed(context, "/signup");
                   },
                   minWidth: double.infinity,
                   height: 60,
@@ -72,7 +76,9 @@ class SplashScreenAuthWidgetState extends StatelessWidget {
             )
           ],
         ),
+        )
       )),
+        )
     );
   }
 }
