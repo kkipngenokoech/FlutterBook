@@ -38,7 +38,12 @@ class _SignupWidgetSceenState extends State<SignupWidgetSceen> {
               children: [
                 TextFormField( 
                   controller: _nameController,
-                  decoration: const InputDecoration(labelText: "full name"),
+                  decoration:  InputDecoration(
+                    labelText: "full name",
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    )
+                  ),
                   validator: (value){
                     if (value == null || value.isEmpty){
                       return 'please enter your name';
@@ -46,10 +51,16 @@ class _SignupWidgetSceenState extends State<SignupWidgetSceen> {
                     return null;
                   },
                 ),
+                const SizedBox(height: 20),
                 TextFormField(
                   controller:_phoneController,
                   keyboardType: TextInputType.phone,
-                  decoration: const InputDecoration(labelText: "phone number" ),
+                  decoration: InputDecoration(
+                    labelText: "phone number",
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10.0)
+                    )
+                  ),
                   validator: (value){
                     if(value == null || value.isEmpty){
                       return "please enter your phone number";
@@ -57,10 +68,16 @@ class _SignupWidgetSceenState extends State<SignupWidgetSceen> {
                     return null;
                   }
                 ),
+                const SizedBox(height: 20),
                 TextFormField(
                   controller: _emailController,
                   keyboardType: TextInputType.emailAddress,
-                  decoration: const InputDecoration(labelText: 'email'),
+                  decoration: InputDecoration(
+                    labelText: 'email',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10.0)
+                    )
+                  ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'please enter your email';
@@ -71,10 +88,16 @@ class _SignupWidgetSceenState extends State<SignupWidgetSceen> {
                     return null;
                   },
                 ),
+                const SizedBox(height: 20),
                 TextFormField(
                   controller: _passwordController,
                   obscureText: true,
-                  decoration: const InputDecoration(labelText: "password"),
+                  decoration:  InputDecoration(
+                    labelText: "password",
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10.0)
+                    )
+                  ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'please enter your password';
@@ -82,11 +105,16 @@ class _SignupWidgetSceenState extends State<SignupWidgetSceen> {
                     return null;
                   },
                 ),
+                const SizedBox(height: 20),
                 TextFormField(
                   controller: _passwordConfirmController,
                   obscureText: true,
-                  decoration:
-                      const InputDecoration(labelText: "confirm password"),
+                  decoration:  InputDecoration(
+                    labelText: "confirm password",
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10.0)
+                    ),
+                  ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'please confirm your password';
@@ -99,8 +127,15 @@ class _SignupWidgetSceenState extends State<SignupWidgetSceen> {
                 ),
                 const SizedBox(height: 20),
                 ElevatedButton(
-                    onPressed: _submitForm, child: const Text("sign up"))
+                  onPressed: _submitForm,
+                  child: const Text("sign up")
+                ),
+                const Center(
+                  child: Text("Already have an account?"),
+                )
+
               ],
+            
             )),
       ),
     );
