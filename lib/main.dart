@@ -21,8 +21,9 @@ class FlutterBookWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: '/',
+      initialRoute: '/landing',
       routes: {
+        '/landing': (context) => const SplashScreenAuthWidgetState(),
         '/notes': (context) => const NotesWidgetScreen(),
         '/addnotes': (context) => const AddNoteFormWidgetScreen(),
         '/notedetail': (context) =>  NoteDetail(),
@@ -60,8 +61,7 @@ class FlutterBookWidget extends StatelessWidget {
                 child: AppointmentWidgetScreen(),
               ),
               Center(
-                child: SplashScreenAuthWidgetState(),
-                // child: Text("contacts"),
+                child: Text("contacts"),
               ),
               Center(
                 child: FormsNotesDisplayWidgetScreen()
