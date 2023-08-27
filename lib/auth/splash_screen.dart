@@ -40,7 +40,7 @@ class SplashScreenAuthWidgetState extends StatelessWidget {
                   minWidth: double.infinity,
                   height: 60,
                   onPressed: () {
-                    Navigator.pushNamed(context, "/");
+                    Navigator.pushNamed(context, "/signin");
                   },
                   color: Colors.indigoAccent[400],
                   shape: RoundedRectangleBorder(

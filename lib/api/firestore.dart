@@ -39,10 +39,23 @@ class FirestoreService {
   }
 
   // sign up with firebase auth.
-  Future<Object?> signUpWithEmailAndPassword(String email, String password) async {
+  Future<Object?> signUpWithEmailAndPassword(
+      String email, String password) async {
     try {
       UserCredential userCredential = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email, password: password);
+      User? user = userCredential.user;
+      return user;
+    } catch (error) {
+      return "$error";
+    }
+  }
+
+  Future<Object?> signInWithEmailAndPassword(
+      String email, String password) async {
+    try {
+      UserCredential userCredential = await FirebaseAuth.instance
+          .signInWithEmailAndPassword(email: email, password: password);
       User? user = userCredential.user;
       return user;
     } catch (error) {

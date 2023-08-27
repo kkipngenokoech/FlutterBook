@@ -26,6 +26,7 @@ class _SignupWidgetSceenState extends State<SignupWidgetSceen> {
       var results = await FirestoreService().signUpWithEmailAndPassword(
           _emailController.text, _passwordController.text);
       if (results is User) {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("User sign up successful")));
         Navigator.pushNamed(context, '/');
       } else if (results is String){
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(results)));
