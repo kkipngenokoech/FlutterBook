@@ -11,16 +11,23 @@ class LoginWidgetScreen extends StatefulWidget {
 }
 
 class _LoginWidgetScreenState extends State<LoginWidgetScreen> {
+  final GlobalKey<FormState> _formKey = GlobalKey();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
   Future<void> _handleLogin(BuildContext context) async {
-    var results = await FirestoreService().signInWithEmailAndPassword(_emailController.text, _passwordController.text);
+    if (_formKey.currentState == _formKey){
+
+    var results = await FirestoreService().signInWithEmailAndPassword(
+        _emailController.text, _passwordController.text);
     if (results is User) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("user sign in successfully")));
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text("user sign in successfully")));
       Navigator.pushNamed(context, '/');
-    } else if (results is String){
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(results)));
+    } else if (results is String) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(results)));
+    }
     }
   }
 
@@ -30,31 +37,44 @@ class _LoginWidgetScreenState extends State<LoginWidgetScreen> {
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 30),
         child: Form(
+            key: _formKey,
             child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            TextFormField(
-              controller: _emailController,
-              decoration: InputDecoration(
-                  labelText: "email",
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10.0))),
-            ),
-            const SizedBox(height: 20),
-            TextFormField(
-              controller: _passwordController,
-              obscureText: true,
-              decoration: InputDecoration(
-                  labelText: "password",
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10.0))),
-            ),
-            ElevatedButton(
-              onPressed: () => _handleLogin(context),
-              child: const Text("Sign in"),
-            )
-          ],
-        )),
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                TextFormField(
+                  controller: _emailController,
+                  decoration: InputDecoration(
+                      labelText: "email",
+                      prefixIcon: const Icon(Icons.email),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10.0))),
+                ),
+                const SizedBox(height: 20),
+                TextFormField(
+                  controller: _passwordController,
+                  obscureText: true,
+                  decoration: InputDecoration(
+                      labelText: "password",
+                      prefixIcon: const Icon(Icons.lock),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10.0))),
+                ),
+                ElevatedButton(
+                  onPressed: () => _handleLogin(context),
+                  child: const Text("Sign in"),
+                ),
+                 Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text("don't have an account?"),
+                    TextButton(
+                      onPressed:() => Navigator.pushNamed(context, '/signup'),
+                      child:const Text("signup")
+                    )
+                  ],
+                )
+              ],
+            )),
       ),
     );
   }

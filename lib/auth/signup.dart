@@ -128,10 +128,21 @@ class _SignupWidgetSceenState extends State<SignupWidgetSceen> {
                 ),
                 const SizedBox(height: 20),
                 ElevatedButton(
-                    onPressed: () =>  _submitForm(context), child: const Text("sign up")),
-                const Center(
-                  child: Text("Already have an account?"),
+                  onPressed: () =>  _submitForm(context), child: const Text("sign up")
+                ),
+                 Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text(
+                      "Already have an account?"
+                    ),
+                    TextButton(
+                      onPressed: () => Navigator.pushNamed(context, "/signin"),
+                      child: const Text("login")
+                    ) 
+                  ],
                 )
+            
               ],
             )),
       ),
