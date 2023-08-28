@@ -46,6 +46,14 @@ class _SignupWidgetSceenState extends State<SignupWidgetSceen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                const Padding(
+                  padding: EdgeInsets.only(top: 0),
+                  child: Image(
+                    image: AssetImage("assets/images/clipart.jpg"),
+                    width: 428,
+                    height: 457,
+                  )
+                ),
                 TextFormField(
                   controller: _nameController,
                   decoration: InputDecoration(
