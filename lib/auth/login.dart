@@ -16,7 +16,7 @@ class _LoginWidgetScreenState extends State<LoginWidgetScreen> {
   final TextEditingController _passwordController = TextEditingController();
 
   Future<void> _handleLogin(BuildContext context) async {
-    if (_formKey.currentState == _formKey){
+    if (_formKey.currentState!.validate()){
 
     var results = await FirestoreService().signInWithEmailAndPassword(
         _emailController.text, _passwordController.text);

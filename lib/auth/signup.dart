@@ -49,7 +49,7 @@ class _SignupWidgetSceenState extends State<SignupWidgetSceen> {
                 const Padding(
                   padding: EdgeInsets.only(top: 0),
                   child: Image(
-                    image: AssetImage("assets/images/clipart.jpg"),
+                    image: AssetImage("assets/images/emc2.jpg"),
                     width: 428,
                     height: 457,
                   )
